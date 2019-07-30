@@ -26,7 +26,7 @@ class TipCalculatorViewController: UIViewController
     @IBOutlet weak var eachPersonAmount:
         UILabel!
     
-    var tipCalculator = TipCalculator(amountBeforeTax: 0, tipPercentage: 0)
+    var tipCalculator = TipCalculator(amountBeforeTax: 0, tipPercentage: 10)
     
     override func viewDidLoad() {
        super.viewDidLoad()
@@ -34,26 +34,36 @@ class TipCalculatorViewController: UIViewController
         
     }
     
-    func calulateTip() {
-        
+    func calulateBill() {
+        tipCalculator.tipPercentage = Double(tipPercetageSlider.value) / 100
+        tipCalculator.amountBeforeTax = (amountBeforeTaxField.text! as NSString).doubleValue
+        tipCalculator.calculateTip()
+        updateUI()
     }
     
     func updateUI() {
-        
+        totalResulLable.text = String(format: "$%0.2f%", tipCalculator.totalAmount)
+        let numPeople: Int = Int(numPeopleSplitSlider.value)
+        eachPersonAmount.text = String(format: "$%0.2f", tipCalculator.totalAmount / Double(numPeople))
     }
     
     
     //MARK: - Target/Action
     
     @IBAction func tipSliderActionChanged(sender: Any) {
+        tipPercentageLabel.text = String(format: "Tip: %02d%%", Int(tipPercetageSlider.value))
+        calulateBill()
         
     }
     
     @IBAction func numPeopleSplitSliderChanged(sender: Any) {
-        
+        numPeopleSplitLabel.text = "Slit: \(Int(numPeopleSplitSlider.value))"
+        calulateBill()
     }
     
-    @IBAction func amountBeforeTaxFieldChanged(sender: Any) {
-        
+    @IBAction func AmountBeforeTaxFieldChanged(_ sender: Any) {
+        calulateBill()
+
     }
+    
 }

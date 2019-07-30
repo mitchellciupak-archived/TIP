@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TIP/TipCalculatorViewController.swift"
-            timestampString = "586036930.018116"
+            timestampString = "586222513.552093"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "tipSliderActionChanged(sender:)"
             landmarkType = "7">
          </BreakpointContent>
